@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Section, SectionHeading } from "@/components/section";
-import { profile, projects, type Project } from "@/data/portfolio";
+import { projects, type Project } from "@/data/portfolio";
 import {
   Dialog,
   DialogContent,
@@ -78,21 +78,21 @@ function Projects() {
               </div>
             </button>
             <div className="flex gap-3 px-6 pb-6">
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+              >
+                Open Project <ExternalLink className="size-4" />
+              </a>
               <button
                 type="button"
                 onClick={() => setActive(p)}
-                className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
-              >
-                View Project <ExternalLink className="size-4" />
-              </button>
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl border border-border px-4 py-2 text-sm font-semibold transition-colors hover:border-primary/50 hover:text-primary"
               >
-                <Github className="size-4" /> GitHub
-              </a>
+                Details
+              </button>
             </div>
           </article>
         ))}
@@ -171,12 +171,12 @@ function Projects() {
                   </ul>
                 </div>
                 <a
-                  href={profile.github}
+                  href={active.link}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl border border-primary/40 px-4 py-2 text-sm font-semibold text-primary"
                 >
-                  <Github className="size-4" /> GitHub repository
+                  <ExternalLink className="size-4" /> Open project
                 </a>
               </div>
             </>

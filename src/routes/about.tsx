@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { GraduationCap, Trophy } from "lucide-react";
+import { Award, GraduationCap, Trophy } from "lucide-react";
 import { Section, SectionHeading } from "@/components/section";
-import { timeline } from "@/data/portfolio";
+import { courses, timeline } from "@/data/portfolio";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -106,6 +106,19 @@ function About() {
               Collaboration, creativity and practical problem-solving under time constraints.
             </p>
           </div>
+        </div>
+      </div>
+
+      <div className="mt-14">
+        <h3 className="text-xl font-semibold">Courses &amp; Certifications</h3>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {courses.map((c) => (
+            <div key={c.name} className="glass rounded-2xl p-6">
+              <Award className="size-5 text-accent" />
+              <h4 className="mt-3 font-semibold">{c.name}</h4>
+              <p className="mt-1 text-sm text-muted-foreground">{c.provider}</p>
+            </div>
+          ))}
         </div>
       </div>
 

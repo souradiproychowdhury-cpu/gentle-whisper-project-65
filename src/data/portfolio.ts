@@ -69,6 +69,7 @@ export type Project = {
   title: string;
   tagline: string;
   image: string;
+  link: string;
   description: string;
   problem: string;
   solution: string;
@@ -84,6 +85,7 @@ export const projects: Project[] = [
     title: "Mochi: AI Virtual Companion",
     tagline: "Voice-driven AI companion inside a cute animated cat interface",
     image: mochiImg,
+    link: "https://souradiproychowdhury-cpu.github.io/mochi/",
     description:
       "Mochi is an interactive AI virtual companion that combines voice interaction, AI assistance, camera analysis, weather, news, navigation, music, calendar functionality, emergency assistance, and useful device features inside a cute animated cat interface.",
     problem:
@@ -128,6 +130,7 @@ export const projects: Project[] = [
     title: "GestureAI",
     tagline: "3D gesture control meets an intelligent Q&A engine",
     image: gestureImg,
+    link: "https://souradiproychowdhury-cpu.github.io/MotionMind./",
     description:
       "GestureAI is an AI-powered interactive application combining 3D gesture control with intelligent AI-powered Question & Answer capabilities.",
     problem:
@@ -162,6 +165,7 @@ export const projects: Project[] = [
     title: "HealthAI — Smart Healthcare App",
     tagline: "Full-stack health platform with AI assistance and tracking",
     image: healthImg,
+    link: "https://github.com/souradiproychowdhury-cpu/VitaSense",
     description:
       "HealthAI is a full-stack smart healthcare platform combining AI-powered health assistance, health tracking, report analysis, medicine reminders, appointments, and emergency functionality.",
     problem:
@@ -210,6 +214,7 @@ export const projects: Project[] = [
     title: "Chat Interface",
     tagline: "Modern real-time messaging UI built with vanilla web tech",
     image: chatImg,
+    link: "https://chatify-px8p.onrender.com/",
     description:
       "A modern real-time messaging interface inspired by contemporary messaging platforms, supporting text communication, image sharing, voice messages, emoji interactions, and responsive layouts.",
     problem:
@@ -249,5 +254,16 @@ export const timeline = [
     year: "2028",
     title: "Expected graduation",
     body: "Continuing to build AI-driven, interactive web products.",
+  },
+];
+
+export const courses = [
+  {
+    name: "Python for Everybody",
+    provider: "Coursera",
+  },
+  {
+    name: "Web Development Mastery: HTML, CSS & JavaScript Fundamentals",
+    provider: "Coursera",
   },
 ];
