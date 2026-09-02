@@ -11,7 +11,7 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={cn("mx-auto w-full max-w-5xl px-5 py-14 md:py-20", className)}>
+    <section id={id} className={cn("mx-auto w-full max-w-6xl px-5 py-16 md:py-24", className)}>
       {children}
     </section>
   );
@@ -29,14 +29,10 @@ export function SectionHeading({
   return (
     <div className="animate-rise max-w-2xl">
       {eyebrow && (
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
-          {eyebrow}
-        </p>
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">{eyebrow}</p>
       )}
-      <h2 className="mt-4 text-3xl font-semibold leading-[1.06] tracking-tight md:text-5xl">
-        {title}
-      </h2>
-      {subtitle && <p className="mt-4 max-w-lg text-sm text-muted-foreground">{subtitle}</p>}
+      <h2 className="mt-3 text-3xl font-bold md:text-4xl">{title}</h2>
+      {subtitle && <p className="mt-4 text-muted-foreground">{subtitle}</p>}
     </div>
   );
 }
