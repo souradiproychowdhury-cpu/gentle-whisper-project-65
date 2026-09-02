@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Download, Github, Linkedin, Sparkles } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import { AiCore } from "@/components/ai-core";
 import { Section, SectionHeading } from "@/components/section";
 import { profile, projects, services } from "@/data/portfolio";
@@ -19,171 +19,165 @@ export const Route = createFileRoute("/")({
         content:
           "Building intelligent digital experiences with AI & code — assistants, chatbots, gesture interfaces and web apps.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
 });
 
+const marquee = [
+  "React.js",
+  "Python",
+  "AI / LLM",
+  "Gesture Recognition",
+  "Chatbots",
+  "Node.js",
+  "Java",
+  "REST APIs",
+];
+
 function Home() {
   return (
     <>
-      <Section className="pt-10 md:pt-16">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
+      {/* Hero */}
+      <Section className="pt-10 md:pt-14">
+        <div className="grid items-center gap-10 md:grid-cols-[1.15fr_0.85fr]">
           <div className="animate-rise min-w-0">
-            <span className="glass font-mono inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] text-primary">
-              <span className="size-1.5 animate-pulse rounded-full bg-primary" />
-              Available for opportunities
+            <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-[11px] text-muted-foreground">
+              <span className="size-1.5 animate-pulse rounded-full bg-foreground" />
+              Available for internships & freelance
             </span>
-            <p className="font-mono mt-6 text-sm text-muted-foreground">
-              Hi, I&apos;m {profile.name}
-            </p>
-            <h1 className="text-glow mt-3 text-4xl font-bold leading-[1.05] md:text-6xl">
-              Building Intelligent Digital Experiences with AI &amp; Code.
+
+            <h1 className="mt-7 text-[2.6rem] font-semibold leading-[0.98] tracking-tight md:text-[4.2rem]">
+              Design that
+              <br />
+              <span className="text-muted-foreground">thinks for itself.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-muted-foreground">
-              Computer Science &amp; Engineering student focused on AI, web development,
-              interactive applications, and next-generation digital experiences.
+
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
+              I&apos;m {profile.name} — a Computer Science &amp; Engineering student building AI
+              assistants, chatbots, gesture interfaces and modern web products that feel alive.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 to="/projects"
-                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-85"
               >
-                View My Projects
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/contact"
-                className="glass glass-hover inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold"
-              >
-                Let&apos;s Connect
+                View my work
+                <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Link>
               <a
                 href={`mailto:${profile.email}?subject=Resume%20request`}
-                className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                <Download className="size-4" /> Download Resume
+                <Download className="size-4" /> Resume
               </a>
             </div>
-
-            <p className="font-mono mt-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              Code. Intelligence. Interaction.
-            </p>
           </div>
 
           <AiCore />
         </div>
       </Section>
 
-      <Section className="py-8">
-        <div className="grid gap-4 sm:grid-cols-3">
-          {[
-            { k: "Focus", v: "AI · Web · Interaction" },
-            { k: "Stack", v: "React · Python · Node" },
-            { k: "Highlight", v: "Hackathon Winner 2025" },
-          ].map((s) => (
-            <div key={s.k} className="glass glass-hover rounded-2xl p-5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-primary">
-                {s.k}
-              </p>
-              <p className="mt-2 font-semibold">{s.v}</p>
-            </div>
-          ))}
+      {/* Marquee */}
+      <div className="border-y border-border py-5">
+        <div className="flex overflow-hidden">
+          <div className="animate-marquee flex shrink-0 items-center gap-12 pr-12">
+            {[...marquee, ...marquee].map((m, i) => (
+              <span
+                key={`${m}-${i}`}
+                className="font-mono whitespace-nowrap text-xs uppercase tracking-[0.25em] text-muted-foreground"
+              >
+                {m}
+              </span>
+            ))}
+          </div>
         </div>
-      </Section>
+      </div>
 
+      {/* Work */}
       <Section>
-        <SectionHeading
-          eyebrow="What I Build"
-          title="Services"
-          subtitle="Four ways I turn ideas into working, intelligent software."
-        />
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHeading
+            eyebrow="Selected work"
+            title="Projects I've shipped."
+            subtitle="AI companions, gesture interfaces, healthcare tech and messaging products."
+          />
+          <Link
+            to="/projects"
+            className="rounded-full border border-border px-4 py-2 text-[13px] text-muted-foreground transition-colors hover:text-foreground"
+          >
+            All projects
+          </Link>
+        </div>
+
         <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {services.map((s) => (
-            <article key={s.no} className="glass glass-hover group rounded-2xl p-6">
-              <p className="font-mono text-xs text-accent">{s.no}</p>
-              <h3 className="mt-3 text-xl font-semibold">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
-              <p className="mt-2 max-h-0 overflow-hidden text-sm text-primary/80 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
-                {s.more}
-              </p>
-            </article>
-          ))}
-        </div>
-        <Link
-          to="/services"
-          className="font-mono mt-8 inline-flex items-center gap-2 text-sm text-primary"
-        >
-          All services <ArrowRight className="size-4" />
-        </Link>
-      </Section>
-
-      <Section>
-        <SectionHeading
-          eyebrow="Featured Projects"
-          title="Things I've built"
-          subtitle="AI companions, gesture interfaces, healthcare tech and messaging UIs."
-        />
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {projects.slice(0, 4).map((p) => (
-            <Link
-              key={p.slug}
-              to="/projects"
-              className="glass glass-hover group block overflow-hidden rounded-2xl"
-            >
-              <img
-                src={p.image}
-                alt={`${p.title} preview`}
-                loading="lazy"
-                width={1280}
-                height={800}
-                className="h-44 w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="p-5">
-                <p className="font-mono text-xs text-accent">{p.no}</p>
-                <h3 className="mt-2 text-lg font-semibold">{p.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
+            <Link key={p.slug} to="/projects" className="group block">
+              <div className="overflow-hidden rounded-2xl border border-border bg-surface/40">
+                <img
+                  src={p.image}
+                  alt={`${p.title} preview`}
+                  loading="lazy"
+                  width={1280}
+                  height={800}
+                  className="h-52 w-full object-cover opacity-90 transition-all duration-700 group-hover:scale-[1.04] group-hover:opacity-100"
+                />
+              </div>
+              <div className="mt-3 flex items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <h3 className="text-sm font-medium">{p.title}</h3>
+                  <p className="mt-0.5 truncate text-xs text-muted-foreground">{p.tagline}</p>
+                </div>
+                <span className="inline-flex shrink-0 items-center gap-1 text-xs text-muted-foreground transition-colors group-hover:text-foreground">
+                  View <ArrowUpRight className="size-3.5" />
+                </span>
               </div>
             </Link>
           ))}
         </div>
       </Section>
 
+      {/* Services */}
       <Section>
-        <div className="glass rounded-3xl p-8 text-center md:p-14">
-          <Sparkles className="mx-auto size-6 text-primary" />
-          <h2 className="mt-4 text-3xl font-bold md:text-4xl">
-            Building. Experimenting. Learning.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Follow the work in progress, or reach out about internships, freelance projects and
-            collaborations.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold transition-colors hover:border-primary/50"
+        <SectionHeading
+          eyebrow="What I do"
+          title="Services, kept simple."
+          subtitle="Four ways I turn ideas into working, intelligent software."
+        />
+        <div className="mt-10 divide-y divide-border border-y border-border">
+          {services.map((s) => (
+            <div
+              key={s.no}
+              className="group grid gap-2 py-6 transition-colors md:grid-cols-[5rem_1fr_1.2fr] md:items-baseline md:gap-6"
             >
-              <Github className="size-4" /> GitHub
-            </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold transition-colors hover:border-primary/50"
-            >
-              <Linkedin className="size-4" /> LinkedIn
-            </a>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
-            >
-              Let&apos;s talk
-            </Link>
-          </div>
+              <p className="font-mono text-xs text-muted-foreground">{s.no}</p>
+              <h3 className="text-lg font-medium transition-transform duration-500 md:group-hover:translate-x-1">
+                {s.title}
+              </h3>
+              <p className="text-sm text-muted-foreground">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Stats */}
+      <Section className="pb-4">
+        <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
+          {[
+            { k: "Focus", v: "AI · Web · Interaction" },
+            { k: "Stack", v: "React · Python · Node" },
+            { k: "Highlight", v: "Hackathon Winner 2025" },
+          ].map((s) => (
+            <div key={s.k} className="bg-background p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+                {s.k}
+              </p>
+              <p className="mt-2 text-sm font-medium">{s.v}</p>
+            </div>
+          ))}
         </div>
       </Section>
     </>

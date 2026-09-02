@@ -21,11 +21,11 @@ export function AiCore() {
   return (
     <div
       ref={ref}
-      className="relative mx-auto aspect-square w-full max-w-[26rem]"
+      className="relative mx-auto aspect-square w-full max-w-[24rem]"
       style={{ perspective: "1000px" }}
     >
-      <div className="absolute inset-6 rounded-full border border-primary/20" />
-      <div className="animate-pulse-ring absolute inset-2 rounded-full border border-accent/25" />
+      <div className="absolute inset-4 rounded-full border border-border" />
+      <div className="animate-pulse-ring absolute inset-0 rounded-full border border-foreground/10" />
       <div
         className="animate-float-slow relative h-full w-full"
         style={{
@@ -39,15 +39,16 @@ export function AiCore() {
           alt="Glowing neural AI core visualisation"
           width={1024}
           height={1024}
-          className="h-full w-full rounded-full object-cover opacity-95 [mask-image:radial-gradient(circle,black_58%,transparent_74%)]"
+          className="h-full w-full rounded-full object-cover opacity-80 grayscale [mask-image:radial-gradient(circle,black_56%,transparent_74%)]"
         />
       </div>
-      <div className="glass absolute -left-2 top-10 rounded-xl px-3 py-2 md:left-0">
-        <p className="font-mono text-[10px] text-primary">neural.core</p>
+      <div className="absolute -left-1 top-10 rounded-full border border-border bg-background/70 px-3 py-1.5 backdrop-blur-md md:left-0">
+        <p className="font-mono text-[10px] text-muted-foreground">neural.core</p>
       </div>
-      <div className="glass absolute bottom-12 -right-2 rounded-xl px-3 py-2 md:right-0">
-        <p className="font-mono text-[10px] text-accent">gesture.stream</p>
+      <div className="absolute bottom-12 -right-1 rounded-full border border-border bg-background/70 px-3 py-1.5 backdrop-blur-md md:right-0">
+        <p className="font-mono text-[10px] text-muted-foreground">gesture.stream</p>
       </div>
     </div>
   );
+
 }
