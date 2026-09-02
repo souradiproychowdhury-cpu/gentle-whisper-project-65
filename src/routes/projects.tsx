@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Section, SectionHeading } from "@/components/section";
-import { profile, projects, type Project } from "@/data/portfolio";
+import { projects, type Project } from "@/data/portfolio";
 import {
   Dialog,
   DialogContent,
