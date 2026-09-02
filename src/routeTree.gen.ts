@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AchievementsRouteImport } from './routes/achievements'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SkillsRouteImport } from './routes/skills'
@@ -29,6 +30,11 @@ const AboutRoute = AboutRouteImport.update({
 const AchievementsRoute = AchievementsRouteImport.update({
   id: '/achievements',
   path: '/achievements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRoute
   '/services': typeof ServicesRoute
   '/skills': typeof SkillsRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRoute
   '/services': typeof ServicesRoute
   '/skills': typeof SkillsRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRoute
   '/services': typeof ServicesRoute
   '/skills': typeof SkillsRoute
@@ -75,14 +84,28 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/achievements' | '/projects' | '/services' | '/skills'
+    | '/'
+    | '/about'
+    | '/achievements'
+    | '/contact'
+    | '/projects'
+    | '/services'
+    | '/skills'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/achievements' | '/projects' | '/services' | '/skills'
+  to:
+    | '/'
+    | '/about'
+    | '/achievements'
+    | '/contact'
+    | '/projects'
+    | '/services'
+    | '/skills'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/achievements'
+    | '/contact'
     | '/projects'
     | '/services'
     | '/skills'
@@ -92,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AchievementsRoute: typeof AchievementsRoute
+  ContactRoute: typeof ContactRoute
   ProjectsRoute: typeof ProjectsRoute
   ServicesRoute: typeof ServicesRoute
   SkillsRoute: typeof SkillsRoute
@@ -118,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/achievements'
       fullPath: '/achievements'
       preLoaderRoute: typeof AchievementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -148,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AchievementsRoute: AchievementsRoute,
+  ContactRoute: ContactRoute,
   ProjectsRoute: ProjectsRoute,
   ServicesRoute: ServicesRoute,
   SkillsRoute: SkillsRoute,
