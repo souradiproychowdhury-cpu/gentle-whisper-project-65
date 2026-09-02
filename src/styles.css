@@ -192,3 +192,20 @@
     scroll-behavior: auto !important;
   }
 }
+
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee-x 26s linear infinite;
+}
+
+@utility hairline {
+  border-top: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+}
